@@ -5,7 +5,7 @@ namespace TheBrainChallenge1;
 
 public class Calculator {
 	
-	private const double AspectAdjust = 1;
+	private const double YSize = 2.65;
 	
 	public Calculator() {
 	}
@@ -17,7 +17,7 @@ public class Calculator {
 		}
 
 		StringBuilder output = new();
-		for(int n = 0; n < size; n++) {
+		for(double n = 0; n < size; n += YSize) {
 			output.Append(line + "\n");
 		}
 
@@ -30,12 +30,12 @@ public class Calculator {
 		double cy = (size) / 2.0;
 
 		cx++;
-		cy++;
+		cy += 2;
 
 		double rad = size / 2.0;
 
 		StringBuilder output = new();
-		for(double y = 0; y < size + 2; y++) {
+		for(double y = 0; y < size + 5; y += YSize) {
 			for(double x = 0; x < size + 2; x++) {
 				double dist = CalcDist(x, y, cx, cy);
 				if(dist <= rad + 1) {

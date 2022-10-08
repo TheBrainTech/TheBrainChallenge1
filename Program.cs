@@ -19,12 +19,16 @@ while(true) {
 
 	Console.WriteLine("======================");
 	Console.WriteLine("SQUARE:");
+	Console.WriteLine("");
 	string square = calc.Square(size);
 	Console.Write(square);
+	Console.WriteLine("");
 	Console.WriteLine("======================");
 	Console.WriteLine("CIRCLE:");
+	Console.WriteLine("");
 	string circle = calc.Circle(size);
 	Console.Write(circle);
+	Console.WriteLine("");
 	Console.WriteLine("======================");
 	Console.WriteLine("\n\n");
 }
