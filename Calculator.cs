@@ -6,6 +6,8 @@ namespace TheBrainChallenge1;
 public class Calculator {
 	
 	private const double YSize = 2.65;
+
+	private const string grayscale = " .:-=+*#%@";
 	
 	public Calculator() {
 	}
@@ -40,19 +42,8 @@ public class Calculator {
 				double dist = CalcDist(x, y, cx, cy);
 				if(dist <= rad + 1) {
 					double amount = rad + 1 - dist;
-					if(amount >= 1) {
-						output.Append("*");
-					} else if(amount >= 0.8) {
-						output.Append("x");
-					} else if(amount >= 0.6) {
-						output.Append("+");
-					} else if(amount >= 0.4) {
-						output.Append("-");
-					} else if(amount >= 0.2) {
-						output.Append("'");
-					} else {
-						output.Append(".");
-					}
+					int index = (int)Math.Min(amount * 10, 9);
+					output.Append(grayscale[index]);
 				} else {
 					output.Append(" ");
 				}
