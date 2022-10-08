@@ -4,23 +4,40 @@ using TheBrainChallenge1;
 
 Console.WriteLine("TheBrain Challenge #1");
 
+string defFill = "10";
+string defEdge = "0";
+string defSize = "50";
+
 while(true) {
 	Console.WriteLine("======================");
-	Console.WriteLine("Enter a size (or zero to exit):");
+	Console.WriteLine($"Enter a size (or X to exit or enter for {defSize}):");
 
 	string sizeString = Console.ReadLine();
-	int.TryParse(sizeString, out int size);
 
+	if(sizeString == "") {
+		sizeString = defSize;
+	}
+
+	if(!int.TryParse(sizeString, out int size)) {
+		break;
+	}
+	
 	if(size <= 0) {
 		break;
 	}
 
-	Console.WriteLine("Fill darkness (1 to 10):");
+	Console.WriteLine($"Fill darkness (1 to 10 or enter for {defFill}):");
 	string fillString = Console.ReadLine();
+	if(fillString == "") {
+		fillString = defFill;
+	}
 	int.TryParse(fillString, out int fill);
 
-	Console.WriteLine("Edge darkness (1 to 10):");
+	Console.WriteLine($"Edge darkness (1 to 10 or enter for {defEdge}):");
 	string edgeString = Console.ReadLine();
+	if(edgeString == "") {
+		edgeString = defEdge;
+	}
 	int.TryParse(edgeString, out int edge);
 
 	Calculator calc = new Calculator();
@@ -39,4 +56,8 @@ while(true) {
 	Console.WriteLine("");
 	Console.WriteLine("======================");
 	Console.WriteLine("\n\n");
+
+	defFill = fillString;
+	defEdge = edgeString;
+	defSize = sizeString;
 }

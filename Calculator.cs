@@ -9,7 +9,8 @@ public class Calculator {
 
 	private const double EdgeWidth = 1;
 
-	private const string grayscale = " .:-=+*#%@";
+	private const string grayscale_1 = " .:-=+*#%@";
+	private const string grayscale = " ░▒▓█";
 	
 	public Calculator() {
 	}
