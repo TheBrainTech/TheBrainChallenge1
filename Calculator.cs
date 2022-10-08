@@ -51,7 +51,7 @@ public class Calculator {
 					double fill = fillAmount * fillDarkness / 10.0;
 					double edge = edgeAmount * edgeDarkness / 10.0;
 					
-					int index = (int)Math.Min((fill + edge) * 10, 9);
+					int index = (int)Math.Min((fill + edge) * grayscale.Length, grayscale.Length - 1);
 					output.Append(grayscale[index]);
 				} else {
 					output.Append(" ");
@@ -62,10 +62,9 @@ public class Calculator {
 		return output.ToString();
 	}
 
-	private double CalcDist(double x, double y, double cx, double cy) {
-		double dx = x - cx;
-		double dy = y - cy;
-		//dx *= AspectAdjust;
+	private double CalcDist(double x1, double y1, double x2, double y2) {
+		double dx = x1 - x2;
+		double dy = y1 - y2;
 		return Math.Sqrt(dx * dx + dy * dy);
 	}
 }
