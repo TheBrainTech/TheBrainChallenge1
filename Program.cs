@@ -15,6 +15,14 @@ while(true) {
 		break;
 	}
 
+	Console.WriteLine("Fill darkness (1 to 10):");
+	string fillString = Console.ReadLine();
+	int.TryParse(fillString, out int fill);
+
+	Console.WriteLine("Edge darkness (1 to 10):");
+	string edgeString = Console.ReadLine();
+	int.TryParse(edgeString, out int edge);
+
 	Calculator calc = new Calculator();
 
 	Console.WriteLine("======================");
@@ -26,7 +34,7 @@ while(true) {
 	Console.WriteLine("======================");
 	Console.WriteLine("CIRCLE:");
 	Console.WriteLine("");
-	string circle = calc.Circle(size);
+	string circle = calc.Circle(size, fill, edge);
 	Console.Write(circle);
 	Console.WriteLine("");
 	Console.WriteLine("======================");

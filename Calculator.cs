@@ -7,14 +7,7 @@ public class Calculator {
 	
 	private const double YSize = 2.65;
 
-	private const double EdgeWidth = 2;
-	
-//	private const double FillColor = 0.2;
-//	private const double EdgeColor = 1;
-	
-	private const double FillColor = 1;
-	private const double EdgeColor = 0;
-	
+	private const double EdgeWidth = 1;
 
 	private const string grayscale = " .:-=+*#%@";
 	
@@ -35,7 +28,7 @@ public class Calculator {
 		return output.ToString();
 	}
 	
-	public string Circle(int size) {
+	public string Circle(int size, int fillDarkness, int edgeDarkness) {
 
 		double cx = (size) / 2.0;
 		double cy = (size) / 2.0;
@@ -55,8 +48,8 @@ public class Calculator {
 					double edgeAmount = Math.Max(EdgeWidth - distFromEdge, 0);
 
 					double fillAmount = Math.Min(rad + 1 - dist, 1);
-					double fill = fillAmount * FillColor;
-					double edge = edgeAmount * EdgeColor;
+					double fill = fillAmount * fillDarkness / 10.0;
+					double edge = edgeAmount * edgeDarkness / 10.0;
 					
 					int index = (int)Math.Min((fill + edge) * 10, 9);
 					output.Append(grayscale[index]);
