@@ -9,16 +9,18 @@ public class Calculator {
 
 	private const double EdgeWidth = 1;
 
-	private const string grayscale_1 = " .:-=+*#%@";
-	private const string grayscale = " ░▒▓█";
+	private const string grayscaleChars = " .:-=+*#%@";
+	private const string grayscaleBlocks = " ░▒▓█";
 	
 	public Calculator() {
 	}
 
-	public string Square(int size) {
+	public string Square(int size, bool useBlocks) {
+		string grays = useBlocks ? grayscaleBlocks : grayscaleChars;
+
 		StringBuilder line = new();
 		for(int n = 0; n < size; n++) {
-			line.Append('*');
+			line.Append(grays[grays.Length - 1]);
 		}
 
 		StringBuilder output = new();
@@ -29,10 +31,12 @@ public class Calculator {
 		return output.ToString();
 	}
 	
-	public string Circle(int size, int fillDarkness, int edgeDarkness) {
+	public string Circle(int size, int fillDarkness, int edgeDarkness, bool useBlocks) {
 
 		double cx = (size) / 2.0;
 		double cy = (size) / 2.0;
+
+		string grays = useBlocks ? grayscaleBlocks : grayscaleChars;
 
 		cx++;
 		cy += 2;
@@ -52,8 +56,8 @@ public class Calculator {
 					double fill = fillAmount * fillDarkness / 10.0;
 					double edge = edgeAmount * edgeDarkness / 10.0;
 					
-					int index = (int)Math.Min((fill + edge) * grayscale.Length, grayscale.Length - 1);
-					output.Append(grayscale[index]);
+					int index = (int)Math.Min((fill + edge) * grayscaleBlocks.Length, grayscaleBlocks.Length - 1);
+					output.Append(grays[index]);
 				} else {
 					output.Append(" ");
 				}

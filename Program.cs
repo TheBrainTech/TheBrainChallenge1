@@ -7,13 +7,20 @@ Console.WriteLine("TheBrain Challenge #1");
 string defFill = "10";
 string defEdge = "0";
 string defSize = "50";
+string defOut = "C";
 
 while(true) {
 	Console.WriteLine("======================");
+	
+	Console.WriteLine($"Chars or blocks (C or B) - default is {defOut}");
+	string outString = Console.ReadLine().ToUpper();
+	if(outString == "C" || outString == "B") {
+		defOut = outString;
+	}
+	bool useBlocks = defOut == "B";
+	
 	Console.WriteLine($"Enter a size (or X to exit or enter for {defSize}):");
-
 	string sizeString = Console.ReadLine();
-
 	if(sizeString == "") {
 		sizeString = defSize;
 	}
@@ -45,13 +52,13 @@ while(true) {
 	Console.WriteLine("======================");
 	Console.WriteLine("SQUARE:");
 	Console.WriteLine("");
-	string square = calc.Square(size);
+	string square = calc.Square(size, useBlocks);
 	Console.Write(square);
 	Console.WriteLine("");
 	Console.WriteLine("======================");
 	Console.WriteLine("CIRCLE:");
 	Console.WriteLine("");
-	string circle = calc.Circle(size, fill, edge);
+	string circle = calc.Circle(size, fill, edge, useBlocks);
 	Console.Write(circle);
 	Console.WriteLine("");
 	Console.WriteLine("======================");
