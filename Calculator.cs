@@ -7,6 +7,15 @@ public class Calculator {
 	
 	private const double YSize = 2.65;
 
+	private const double EdgeWidth = 2;
+	
+//	private const double FillColor = 0.2;
+//	private const double EdgeColor = 1;
+	
+	private const double FillColor = 1;
+	private const double EdgeColor = 0;
+	
+
 	private const string grayscale = " .:-=+*#%@";
 	
 	public Calculator() {
@@ -41,8 +50,15 @@ public class Calculator {
 			for(double x = 0; x < size + 2; x++) {
 				double dist = CalcDist(x, y, cx, cy);
 				if(dist <= rad + 1) {
-					double amount = rad + 1 - dist;
-					int index = (int)Math.Min(amount * 10, 9);
+
+					double distFromEdge = Math.Abs(dist - rad);
+					double edgeAmount = Math.Max(EdgeWidth - distFromEdge, 0);
+
+					double fillAmount = Math.Min(rad + 1 - dist, 1);
+					double fill = fillAmount * FillColor;
+					double edge = edgeAmount * EdgeColor;
+					
+					int index = (int)Math.Min((fill + edge) * 10, 9);
 					output.Append(grayscale[index]);
 				} else {
 					output.Append(" ");
