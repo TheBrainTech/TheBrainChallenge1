@@ -13,15 +13,23 @@ string defOut = "C";
 while(true) {
 	Console.WriteLine("======================");
 	
-	Console.WriteLine($"(C)hararters, (B)locks or e(X)it? - default is {defOut}");
+	Console.WriteLine($"(C)hararters, (G)rayscale, (B)lack and White or e(X)it? - default is {defOut}");
 	string outString = Console.ReadLine().ToUpper();
+	Calculator.OutputType outputType = Calculator.OutputType.Characters;
 	if(outString == "X") {
 		break;
 	}
-	if(outString == "C" || outString == "B") {
-		defOut = outString;
+	switch(outString) {
+		case "C":
+			outputType = Calculator.OutputType.Characters;
+			break;
+		case "B":
+			outputType = Calculator.OutputType.BlackAndWhite;
+			break;
+		case "G":
+			outputType = Calculator.OutputType.Grayscale;
+			break;
 	}
-	bool useBlocks = defOut == "B";
 	
 	Console.WriteLine($"Enter a size (enter for {defSize}):");
 	string sizeString = Console.ReadLine();
@@ -63,14 +71,20 @@ while(true) {
 	Console.WriteLine("======================");
 	Console.WriteLine("CIRCLE:");
 	Console.WriteLine("");
-	string circle = calc.Circle(size, fill, edge, useBlocks);
+	string circle = calc.Circle(size, fill, edge, outputType);
 	Console.Write(circle);
 	Console.WriteLine("");
 	Console.WriteLine("======================");
 	Console.WriteLine("PICTURE:");
 	Console.WriteLine("");
-	string picture = calc.Picture(size, useBlocks);
+	string picture = calc.Picture(size, outputType);
 	Console.Write(picture);
+	Console.WriteLine("");
+	Console.WriteLine("======================");
+	Console.WriteLine("PICTURE (with error diffusion):");
+	Console.WriteLine("");
+	string picture2 = calc.PictureWithDiffusion(size, outputType);
+	Console.Write(picture2);
 	Console.WriteLine("");
 	Console.WriteLine("======================");
 	Console.WriteLine("\n\n");
